@@ -47,20 +47,57 @@ a {
 }
 
 .grid-container main {
-  background-color: brown;
   grid-column: 1/4;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 16px;
+  gap: 32px 0;
+}
+.recipe-card {
+  width: 80%;
+  background-color: aliceblue;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  align-self: center;
+  justify-self: center;
+  gap: 16px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  /* padding: 0 16px 16px 16px; */
+}
+
+.recipe-card img {
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+}
+
+.recipe-card h2,
+.recipe-card p {
+  margin: 0px 16px;
+}
+
+.recipe-card button {
+  margin-bottom: 16px;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background-color: orange;
+  color: white;
 }
 
 .grid-container aside {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 32px;
   padding: 16px;
 }
 
 aside img {
+  border-radius: 8px;
 }
 
 .icons-container {
@@ -86,7 +123,65 @@ i {
   color: #106aff;
 }
 
-.grid-container footer {
-  background-color: burlywood;
+footer {
   grid-column: 1/5;
+  background-color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .grid-container main {
+    /* grid-column: 1/5; */
+    grid-column: 1/-1;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-container aside {
+    grid-column: 1/-1;
+  }
+
+  .grid-container {
+    /*                  NAV SLOGAN MAIN ASIDE FOOTER*/
+    grid-template-rows: 50px 200px auto auto 50px;
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .grid-container main {
+    grid-template-columns: 1fr;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  header nav {
+    display: none;
+    flex-direction: column;
+    background-color: aliceblue;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+    text-align: center;
+    padding: 10px 0;
+    gap: 16px;
+    font-size: 24px;
+  }
+
+  /* Show menu when checkbox is checked */
+  #menu-toggle:checked + .hamburger + nav {
+    display: flex;
+  }
 }
